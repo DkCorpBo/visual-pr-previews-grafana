@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  webhook-receiver:
+    build: .
+    container_name: gitea-webhook-preview
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./previews:/app/static/previews
+      # Mount your SSL certificates inside the container if running secure HTTPS
+      # - /path/to/certs:/app/certs
+    restart: always
